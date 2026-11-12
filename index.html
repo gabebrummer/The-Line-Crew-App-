@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Line · Yampa Sandwich Co.</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="The Line">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#2C5C66">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+  html,body{margin:0;height:100%;background:#2C5C66;overflow:hidden;font-family:Montserrat,Arial,sans-serif}
+  #top{position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top);background:#2C5C66}
+  #bottom{position:fixed;left:0;right:0;bottom:0;height:env(safe-area-inset-bottom);background:#2C5C66;transition:background .2s}
+  #app{position:fixed;left:0;right:0;top:env(safe-area-inset-top);bottom:env(safe-area-inset-bottom);width:100%;height:calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));border:0;display:block}
+  #help{display:none;position:fixed;inset:0;background:#2C5C66;color:#FAF6EC;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center}
+  #help b{font-size:28px;font-weight:900}
+  #help a{background:#FAF6EC;color:#2C5C66;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:12px}
+</style>
+</head>
+<body>
+<div id="top"></div>
+<iframe id="app" title="The Line" allow="clipboard-write"></iframe>
+<div id="bottom"></div>
+<div id="help"><b>The Line</b><span>Taking longer than usual to open.</span><a id="open" href="#">Open The Line</a><span style="font-size:13px;opacity:.8">Still stuck? Contact Gabe.</span></div>
+<script>
+  // The Line front door. Only this line changes if the app's web address ever changes:
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbwuGpVV8yzC8F_JTcQegBpAzEcB6m2LjCBj_kY9hyHJ8NM_0fQ0K7KUdNtApq5_43w4ag/exec';
+  var frame = document.getElementById('app'), ready = false;
+  frame.src = APP_URL;
+  document.getElementById('open').href = APP_URL;
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (!d.theLine) return;
+    ready = true; document.getElementById('help').style.display = 'none';
+    document.getElementById('bottom').style.background = d.theLine === 'app' ? '#FFFFFF' : '#2C5C66';
+  });
+  setTimeout(function () { if (!ready) document.getElementById('help').style.display = 'flex'; }, 15000);
+</script>
+</body>
+</html>
