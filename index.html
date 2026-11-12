@@ -19,9 +19,12 @@
   #top{position:fixed;left:0;right:0;top:0;height:calc(env(safe-area-inset-top) + 18px);background:#2C5C66}
   #bottom{display:none}
   #app{position:fixed;left:0;right:0;top:calc(env(safe-area-inset-top) + 18px);bottom:0;width:100%;height:calc(100% - env(safe-area-inset-top) - 18px);border:0;display:block}
-  #splash{position:fixed;inset:0;background:#FAF6EC;color:#2C5C66;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;transition:opacity .3s}
+  #splash{position:fixed;inset:0;background:#FAF6EC;color:#2C5C66;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:opacity .3s}
   #splash img{width:120px}
   #splash b{font-size:32px;font-weight:900}
+  #splash b.w{font-size:56px;letter-spacing:4px;line-height:.95;margin:0}
+  #splash i{display:block;width:180px;height:10px;border-radius:5px;background:#B9C12B;margin:6px 0 4px}
+  #splash img{width:84px;margin-bottom:8px}
   #splash span{font-size:15px;font-weight:600;color:#5C564C}
   #help{display:none;position:fixed;inset:0;background:#2C5C66;color:#FAF6EC;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px;text-align:center}
   #help b{font-size:28px;font-weight:900}
@@ -32,7 +35,7 @@
 <div id="top"></div>
 <iframe id="app" title="The Line" allow="clipboard-write"></iframe>
 <div id="bottom"></div>
-<div id="splash"><img src="yampa-logo.png" alt=""><b>The Line</b><span>Opening…</span></div>
+<div id="splash"><img src="yampa-logo.png" alt=""><b class="w">THE</b><b class="w">LINE</b><i></i><span>Opening…</span></div>
 <div id="help"><b>The Line</b><span>Taking longer than usual to open.</span><a id="open" href="#">Open The Line</a><span style="font-size:13px;opacity:.8">Still stuck? Contact Gabe.</span></div>
 <script>
   // The Line front door. Only this line changes if the app's web address ever changes:
